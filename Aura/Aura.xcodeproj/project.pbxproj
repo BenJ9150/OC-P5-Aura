@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		434858152B62CAD2000A70A1 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434858142B62CAD2000A70A1 /* AuthService.swift */; };
+		434858182B62CD91000A70A1 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434858172B62CD91000A70A1 /* Endpoint.swift */; };
+		4348581A2B62E176000A70A1 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434858192B62E176000A70A1 /* KeychainManager.swift */; };
+		4348581C2B62F4CF000A70A1 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4348581B2B62F4CF000A70A1 /* AccountService.swift */; };
+		43D1E2362B63FBC000D8C795 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D1E2352B63FBC000D8C795 /* ApiError.swift */; };
+		43E87D892B6391AF008E5343 /* UrlSessionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E87D882B6391AF008E5343 /* UrlSessionBuilder.swift */; };
+		43E87D8B2B63BA32008E5343 /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E87D8A2B63BA32008E5343 /* ApiResponse.swift */; };
+		43E87D8F2B63E430008E5343 /* BodyKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E87D8E2B63E430008E5343 /* BodyKey.swift */; };
 		53D4187C2AC7099A0070ADB1 /* AuraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D4187B2AC7099A0070ADB1 /* AuraApp.swift */; };
 		53D418802AC7099B0070ADB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53D4187F2AC7099B0070ADB1 /* Assets.xcassets */; };
 		53D418832AC7099B0070ADB1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53D418822AC7099B0070ADB1 /* Preview Assets.xcassets */; };
@@ -22,6 +30,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		434858142B62CAD2000A70A1 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		434858172B62CD91000A70A1 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		434858192B62E176000A70A1 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		4348581B2B62F4CF000A70A1 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
+		43D1E2352B63FBC000D8C795 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		43E87D882B6391AF008E5343 /* UrlSessionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlSessionBuilder.swift; sourceTree = "<group>"; };
+		43E87D8A2B63BA32008E5343 /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
+		43E87D8E2B63E430008E5343 /* BodyKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyKey.swift; sourceTree = "<group>"; };
 		53D418782AC7099A0070ADB1 /* Aura.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aura.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53D4187B2AC7099A0070ADB1 /* AuraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuraApp.swift; sourceTree = "<group>"; };
 		53D4187F2AC7099B0070ADB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -48,6 +64,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		434858162B62CADD000A70A1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				434858192B62E176000A70A1 /* KeychainManager.swift */,
+				43E87D902B63E46C008E5343 /* AuraAPI */,
+				434858142B62CAD2000A70A1 /* AuthService.swift */,
+				4348581B2B62F4CF000A70A1 /* AccountService.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		43E87D902B63E46C008E5343 /* AuraAPI */ = {
+			isa = PBXGroup;
+			children = (
+				434858172B62CD91000A70A1 /* Endpoint.swift */,
+				43E87D8E2B63E430008E5343 /* BodyKey.swift */,
+				43D1E2352B63FBC000D8C795 /* ApiError.swift */,
+				43E87D8A2B63BA32008E5343 /* ApiResponse.swift */,
+				43E87D882B6391AF008E5343 /* UrlSessionBuilder.swift */,
+			);
+			path = AuraAPI;
+			sourceTree = "<group>";
+		};
 		53D4186F2AC7099A0070ADB1 = {
 			isa = PBXGroup;
 			children = (
@@ -68,7 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				53D418962AC70FC50070ADB1 /* Utils */,
-				53D4188B2AC709B80070ADB1 /* Models */,
+				434858162B62CADD000A70A1 /* Models */,
 				53D4188A2AC709B30070ADB1 /* ViewModels */,
 				53D418892AC709AD0070ADB1 /* Views */,
 				53D4187B2AC7099A0070ADB1 /* AuraApp.swift */,
@@ -105,13 +144,6 @@
 				53D4189E2AC717890070ADB1 /* MoneyTransferViewModel.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		53D4188B2AC709B80070ADB1 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		53D418962AC70FC50070ADB1 /* Utils */ = {
@@ -193,14 +225,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43E87D8F2B63E430008E5343 /* BodyKey.swift in Sources */,
+				4348581A2B62E176000A70A1 /* KeychainManager.swift in Sources */,
 				53D4187C2AC7099A0070ADB1 /* AuraApp.swift in Sources */,
 				53D418952AC70ABF0070ADB1 /* MoneyTransferView.swift in Sources */,
+				43E87D892B6391AF008E5343 /* UrlSessionBuilder.swift in Sources */,
+				43D1E2362B63FBC000D8C795 /* ApiError.swift in Sources */,
 				53D4189B2AC711990070ADB1 /* AuthenticationViewModel.swift in Sources */,
 				53D4189D2AC715AA0070ADB1 /* AccountDetailViewModel.swift in Sources */,
+				434858182B62CD91000A70A1 /* Endpoint.swift in Sources */,
 				53D418912AC70A920070ADB1 /* AuthenticationView.swift in Sources */,
+				434858152B62CAD2000A70A1 /* AuthService.swift in Sources */,
 				53D418932AC70AB10070ADB1 /* AccountDetailView.swift in Sources */,
 				53D4189F2AC717890070ADB1 /* MoneyTransferViewModel.swift in Sources */,
 				53D4188D2AC709F40070ADB1 /* AppViewModel.swift in Sources */,
+				43E87D8B2B63BA32008E5343 /* ApiResponse.swift in Sources */,
+				4348581C2B62F4CF000A70A1 /* AccountService.swift in Sources */,
 				53D418A12AC71B8F0070ADB1 /* View+Extensions.swift in Sources */,
 				53D418992AC70FD80070ADB1 /* Color+Extensions.swift in Sources */,
 			);
@@ -337,6 +377,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Aura/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -365,6 +406,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Aura/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

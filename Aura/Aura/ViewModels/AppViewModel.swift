@@ -8,19 +8,30 @@
 import Foundation
 
 class AppViewModel: ObservableObject {
+
+    // MARK: - Outputs
+
     @Published var isLogged: Bool
-    
-    init() {
-        isLogged = false
-    }
     
     var authenticationViewModel: AuthenticationViewModel {
         return AuthenticationViewModel { [weak self] in
-            self?.isLogged = true
+            DispatchQueue.main.async {
+                self?.isLogged = true
+            }
         }
     }
     
     var accountDetailViewModel: AccountDetailViewModel {
-        return AccountDetailViewModel()
+        return AccountDetailViewModel { [weak self] in  // NEWBEN: add closure to signOut
+            DispatchQueue.main.async {
+                self?.isLogged = false
+            }
+        }
+    }
+
+    // MARK: - Init
+
+    init() {
+        isLogged = KeychainManager.userIsLogged // NEWBEN, old: isLogged = false
     }
 }
