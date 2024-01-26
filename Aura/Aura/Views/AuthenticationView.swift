@@ -65,7 +65,7 @@ struct AuthenticationView: View {
         .onTapGesture {
             self.endEditing(true)  // This will dismiss the keyboard when tapping outside
         }
-        .alert(viewModel.ErrorAlert.title, isPresented: $viewModel.displayErrorAlert) {  // NEWBEN: error alert
+        .alert(viewModel.ErrorAlert.title, isPresented: $viewModel.displayAlert) {  // NEWBEN: error alert
             Button(role: .cancel) {} label: {
                 Text("OK")
             }

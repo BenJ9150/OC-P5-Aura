@@ -14,6 +14,7 @@ enum ApiError: Error {
     case invalidData
     case invalidJson
     case keychainErr
+    case decimalCast
     case unknown
 
     // MARK: Message Builder
@@ -35,6 +36,8 @@ enum ApiError: Error {
             return "\(start)\nError: 105"
         case .keychainErr:
             return "\(start)\nError: 106"
+        case .decimalCast:
+            return "The amount entered does not appear to be a number."
         case .unknown:
             return "\(start)\nError: 100"
         }

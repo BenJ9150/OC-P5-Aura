@@ -31,7 +31,7 @@ class AccountDetailViewModel: ObservableObject {
 
     @Published var totalAmount: String = ""
     @Published var recentTransactions: [Transaction] = []
-    @Published var displayErrorAlert = false
+    @Published var displayAlert = false
     @Published var showAlltransactions = false
     private(set) var allTransactions: [Transaction] = []
     private(set) var ErrorAlert = ApiError.unknown
@@ -86,7 +86,7 @@ private extension AccountDetailViewModel {
     func displayError(_ failure: ApiError) {
         ErrorAlert = failure
         DispatchQueue.main.async {
-            self.displayErrorAlert.toggle()
+            self.displayAlert.toggle()
         }
     }
 }

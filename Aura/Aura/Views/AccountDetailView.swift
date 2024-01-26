@@ -26,7 +26,7 @@ struct AccountDetailView: View {
                     viewModel.signOut()
                 }
             }
-            .alert(viewModel.ErrorAlert.title, isPresented: $viewModel.displayErrorAlert) {  // NEWBEN: error alert
+            .alert(viewModel.ErrorAlert.title, isPresented: $viewModel.displayAlert) {  // NEWBEN: error alert
                 Button(role: .cancel) {} label: {
                     Text("OK")
                 }

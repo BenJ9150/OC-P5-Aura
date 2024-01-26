@@ -32,7 +32,7 @@ class AuthenticationViewModel: ObservableObject {
 
     @Published var username: String = "test@aura.app"
     @Published var password: String = "test123"
-    @Published var displayErrorAlert = false
+    @Published var displayAlert = false
     private(set) var ErrorAlert = ApiError.unknown
 
     // MARK: - Private properties
@@ -79,7 +79,7 @@ private extension AuthenticationViewModel {
     func displayError(_ failure: ApiError) {
         ErrorAlert = failure
         DispatchQueue.main.async {
-            self.displayErrorAlert.toggle()
+            self.displayAlert.toggle()
         }
     }
 }

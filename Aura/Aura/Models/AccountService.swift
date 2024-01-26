@@ -43,15 +43,29 @@ extension AccountService {
         }
     }
     
-    func transfert(to recipient: String, amount: Decimal, _ completion: @escaping (Result<Bool, Error>) -> Void) {
+    func transfert(to recipient: String, amount: String, _ completion: @escaping (Result<Bool, Error>) -> Void) {
+        // convert amount to decimal
+        guard let decimalAmount = Decimal(string: amount) else {
+            completion(.failure(ApiError.decimalCast))
+            return
+        }
         // set config for url session
         let config = UrlSessionConfig(
             httpMethod: .post,
             sUrl: EndPoint.transfer.url,
-            parameters: [BodyKey.recipient: recipient, BodyKey.amount: amount],
+            parameters: [BodyKey.recipient: recipient, BodyKey.amount: decimalAmount],
             withAuth: true
         )
         // get data
-        // TODO
+        buildUrlSession(config: config) { result in
+            switch result {
+            case .success(let data):
+                // data is empty, no need to decode
+                completion(.success(true))
+
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }
