@@ -31,9 +31,9 @@ class AccountDetailViewModel: ObservableObject {
 
     @Published var totalAmount: String = ""
     @Published var recentTransactions: [Transaction] = []
-    @Published var allTransactions: [Transaction] = []
     @Published var displayErrorAlert = false
     @Published var showAlltransactions = false
+    private(set) var allTransactions: [Transaction] = []
     private(set) var ErrorAlert = ApiError.unknown
 
     // MARK: - Private properties
@@ -76,9 +76,9 @@ extension AccountDetailViewModel {
 private extension AccountDetailViewModel {
 
     func publishAccount(_ account: AccountResponse) {
+        allTransactions = account.transactions
         DispatchQueue.main.async {
             self.totalAmount = account.totalAmount
-            self.allTransactions = account.transactions
             self.recentTransactions = Array(account.transactions.prefix(3))
         }
     }

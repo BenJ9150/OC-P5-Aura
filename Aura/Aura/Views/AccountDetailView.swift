@@ -14,67 +14,16 @@ struct AccountDetailView: View {
         NavigationStack {
             VStack(spacing: 20) {
                 // Large Header displaying total amount
-                VStack(spacing: 10) {
-                    Text("Your Balance")
-                        .font(.headline)
-                    Text(viewModel.totalAmount)
-                        .font(.system(size: 60, weight: .bold))
-                        .foregroundColor(Color(hex: "#94A684")) // Using the green color you provided
-                    Image(systemName: "eurosign.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 80)
-                        .foregroundColor(Color(hex: "#94A684"))
-                }
-                .padding(.top)
-                
+                accountDetailHeader
                 // Display recent transactions
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Recent Transactions")
-                        .font(.headline)
-                        .padding([.horizontal])
-                    ForEach(viewModel.recentTransactions, id: \.description) { transaction in
-                        HStack {
-                            Image(systemName: transaction.amount.contains("+") ? "arrow.up.right.circle.fill" : "arrow.down.left.circle.fill")
-                                .foregroundColor(transaction.amount.contains("+") ? .green : .red)
-                            Text(transaction.description)
-                            Spacer()
-                            Text(transaction.amount)
-                                .fontWeight(.bold)
-                                .foregroundColor(transaction.amount.contains("+") ? .green : .red)
-                        }
-                        .padding()
-                        .background(Color.gray.opacity(0.1))
-                        .cornerRadius(8)
-                        .padding([.horizontal])
-                    }
-                }
-                
+                recentTransactions
                 // Button to see details of transactions
-                Button(action: {
-                    viewModel.showAlltransactions.toggle()
-                }) {
-                    HStack {
-                        Image(systemName: "list.bullet")
-                        Text("See Transaction Details")
-                    }
-                    .padding()
-                    .background(Color(hex: "#94A684"))
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-                }
-                .padding([.horizontal, .bottom])
-                
+                showTransactionDetailsBtn
                 Spacer()
             }
-            .onTapGesture {
-                self.endEditing(true)  // This will dismiss the keyboard when tapping outside
-            }
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Exit") {
-                        viewModel.signOut()
-                    }
+                exitToolbarItem {
+                    viewModel.signOut()
                 }
             }
             .alert(viewModel.ErrorAlert.title, isPresented: $viewModel.displayErrorAlert) {  // NEWBEN: error alert
@@ -85,8 +34,56 @@ struct AccountDetailView: View {
                 Text(viewModel.ErrorAlert.message)
             }
         }
+        .sheet(isPresented: $viewModel.showAlltransactions) {
+            AllTransactionsView(allTransactions: viewModel.allTransactions)
+        }
     }
-    
+}
+
+private extension AccountDetailView {
+
+    var accountDetailHeader: some View {
+        VStack(spacing: 10) {
+            Text("Your Balance")
+                .font(.headline)
+            Text(viewModel.totalAmount)
+                .font(.system(size: 60, weight: .bold))
+                .foregroundColor(Color(hex: "#94A684")) // Using the green color you provided
+            Image(systemName: "eurosign.circle.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 80)
+                .foregroundColor(Color(hex: "#94A684"))
+        }
+        .padding(.top)
+    }
+
+    var recentTransactions: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("Recent Transactions")
+                .font(.headline)
+                .padding([.horizontal])
+            ForEach(viewModel.recentTransactions, id: \.description) { transaction in
+                TransactionRowView(transaction: transaction)
+            }
+        }
+    }
+
+    var showTransactionDetailsBtn: some View {
+        Button(action: {
+            viewModel.showAlltransactions.toggle()
+        }) {
+            HStack {
+                Image(systemName: "list.bullet")
+                Text("See Transaction Details")
+            }
+            .padding()
+            .background(Color(hex: "#94A684"))
+            .foregroundColor(.white)
+            .cornerRadius(8)
+        }
+        .padding([.horizontal, .bottom])
+    }
 }
 
 #Preview {
