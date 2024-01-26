@@ -15,54 +15,9 @@ struct MoneyTransferView: View {
     var body: some View {
         VStack(spacing: 20) {
             // Adding a fun header image
-            Image(systemName: "arrow.right.arrow.left.circle.fill")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 80, height: 80)
-                .foregroundColor(Color(hex: "#94A684"))
-                .padding()
-                .scaleEffect(animationScale)
-                .onAppear {
-                    withAnimation(Animation.easeInOut(duration: 0.5).repeatForever(autoreverses: true)) {
-                        animationScale = 1.2
-                    }
-                }
-            
-            Text("Send Money!")
-                .font(.largeTitle)
-                .fontWeight(.heavy)
-            
-            VStack(alignment: .leading) {
-                Text("Recipient (Email or Phone)")
-                    .font(.headline)
-                TextField("Enter recipient's info", text: $viewModel.recipient)
-                    .padding()
-                    .background(Color.gray.opacity(0.2))
-                    .cornerRadius(8)
-                    .keyboardType(.emailAddress)
-            }
-            
-            VStack(alignment: .leading) {
-                Text("Amount (€)")
-                    .font(.headline)
-                TextField("0.00", text: $viewModel.amount)
-                    .padding()
-                    .background(Color.gray.opacity(0.2))
-                    .cornerRadius(8)
-                    .keyboardType(.decimalPad)
-            }
-            
-            Button(action: viewModel.sendMoney) {
-                HStack {
-                    Image(systemName: "arrow.right.circle.fill")
-                    Text("Send")
-                }
-                .padding()
-                .background(Color(hex: "#94A684"))
-                .foregroundColor(.white)
-                .cornerRadius(8)
-            }
-            .buttonStyle(PlainButtonStyle())
+            moneyTransferHeader
+            TransferTextfieldsView(viewModel: viewModel)
+            sendButton
             
             // Message
             if !viewModel.transferMessage.isEmpty {
@@ -89,6 +44,77 @@ struct MoneyTransferView: View {
     }
 }
 
+private extension MoneyTransferView {
+
+    // MARK: - Header
+
+    var moneyTransferHeader: some View {
+        Group {
+            Image(systemName: "arrow.right.arrow.left.circle.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 80, height: 80)
+                .foregroundColor(Color(hex: "#94A684"))
+                .padding()
+                .scaleEffect(animationScale)
+                .onAppear {
+                    withAnimation(Animation.easeInOut(duration: 0.5).repeatForever(autoreverses: true)) {
+                        animationScale = 1.2
+                    }
+                }
+            
+            Text("Send Money!")
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+        }
+    }
+
+    // MARK: - Textfields
+
+    struct TransferTextfieldsView: View {
+        @ObservedObject var viewModel: MoneyTransferViewModel
+
+        var body: some View {
+            VStack(alignment: .leading) {
+                Text("Recipient (Email or Phone)")
+                    .font(.headline)
+                TextField("Enter recipient's info", text: $viewModel.recipient)
+                    .padding()
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(8)
+                    .keyboardType(.emailAddress)
+            }
+            
+            VStack(alignment: .leading) {
+                Text("Amount (€)")
+                    .font(.headline)
+                TextField("0.00", text: $viewModel.amount)
+                    .padding()
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(8)
+                    .keyboardType(.decimalPad)
+            }
+        }
+    }
+
+    // MARK: - Send button
+
+    var sendButton: some View {
+        Button(action: viewModel.sendMoney) {
+            HStack {
+                Image(systemName: "arrow.right.circle.fill")
+                Text("Send")
+            }
+            .padding()
+            .background(Color(hex: "#94A684"))
+            .foregroundColor(.white)
+            .cornerRadius(8)
+        }
+        .buttonStyle(PlainButtonStyle())
+    }
+}
+
+// MARK: - Preview
 
 #Preview {
     MoneyTransferView()

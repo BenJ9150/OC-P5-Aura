@@ -26,39 +26,9 @@ struct AuthenticationView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 20) {
-                Image(systemName: "person.circle")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 50, height: 50)
-                
-                Text("Welcome !")
-                    .font(.largeTitle)
-                    .fontWeight(.semibold)
-                
-                TextField("Adresse email", text: $viewModel.username)
-                    .padding()
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .cornerRadius(8)
-                    .autocapitalization(.none)
-                    .keyboardType(.emailAddress)
-                    .disableAutocorrection(true)
-                
-                SecureField("Mot de passe", text: $viewModel.password)
-                    .padding()
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .cornerRadius(8)
-                
-                Button(action: {
-                    // Handle authentication logic here
-                    viewModel.login()
-                }) {
-                    Text("Se connecter")
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.black) // You can also change this to your pastel green color
-                        .cornerRadius(8)
-                }
+                authenticationHeader
+                SignInTextfieldsView(viewModel: viewModel)
+                signInButton
             }
             .padding(.horizontal, 40)
         }
@@ -74,6 +44,63 @@ struct AuthenticationView: View {
         }
     }
 }
+
+private extension AuthenticationView {
+
+    // MARK: - Header
+
+    var authenticationHeader: some View {
+        Group {
+            Image(systemName: "person.circle")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 50, height: 50)
+            
+            Text("Welcome !")
+                .font(.largeTitle)
+                .fontWeight(.semibold)
+        }
+    }
+
+    // MARK: - Textfields
+
+    struct SignInTextfieldsView: View {
+        @ObservedObject var viewModel: AuthenticationViewModel
+
+        var body: some View {
+            TextField("Adresse email", text: $viewModel.username)
+                .padding()
+                .background(Color(UIColor.secondarySystemBackground))
+                .cornerRadius(8)
+                .autocapitalization(.none)
+                .keyboardType(.emailAddress)
+                .disableAutocorrection(true)
+            
+            SecureField("Mot de passe", text: $viewModel.password)
+                .padding()
+                .background(Color(UIColor.secondarySystemBackground))
+                .cornerRadius(8)
+        }
+    }
+
+    // MARK: - Sign in button
+
+    var signInButton: some View {
+        Button(action: {
+            // Handle authentication logic here
+            viewModel.login()
+        }) {
+            Text("Se connecter")
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.black) // You can also change this to your pastel green color
+                .cornerRadius(8)
+        }
+    }
+}
+
+// MARK: - Preview
 
 #Preview {
     AuthenticationView(viewModel: AuthenticationViewModel({

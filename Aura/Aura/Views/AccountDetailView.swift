@@ -42,6 +42,8 @@ struct AccountDetailView: View {
 
 private extension AccountDetailView {
 
+    // MARK: - Header
+
     var accountDetailHeader: some View {
         VStack(spacing: 10) {
             Text("Your Balance")
@@ -58,6 +60,8 @@ private extension AccountDetailView {
         .padding(.top)
     }
 
+    // MARK: - transactions
+
     var recentTransactions: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Recent Transactions")
@@ -68,6 +72,8 @@ private extension AccountDetailView {
             }
         }
     }
+
+    // MARK: - Show details button
 
     var showTransactionDetailsBtn: some View {
         Button(action: {
@@ -85,6 +91,8 @@ private extension AccountDetailView {
         .padding([.horizontal, .bottom])
     }
 }
+
+// MARK: - Preview
 
 #Preview {
     AccountDetailView(viewModel: AccountDetailViewModel({
