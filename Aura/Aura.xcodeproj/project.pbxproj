@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		432643DF2B7632260045904C /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432643DE2B7632260045904C /* String+Extensions.swift */; };
+		432643E72B76532C0045904C /* AuraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432643E62B76532C0045904C /* AuraTests.swift */; };
+		4326441A2B76610E0045904C /* TransfertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432644192B76610E0045904C /* TransfertService.swift */; };
 		434858152B62CAD2000A70A1 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434858142B62CAD2000A70A1 /* AuthService.swift */; };
 		434858182B62CD91000A70A1 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434858172B62CD91000A70A1 /* Endpoint.swift */; };
 		4348581A2B62E176000A70A1 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434858192B62E176000A70A1 /* KeychainManager.swift */; };
-		4348581C2B62F4CF000A70A1 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4348581B2B62F4CF000A70A1 /* AccountService.swift */; };
+		4348581C2B62F4CF000A70A1 /* AccountDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4348581B2B62F4CF000A70A1 /* AccountDetailService.swift */; };
 		43D1E2362B63FBC000D8C795 /* AuraError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D1E2352B63FBC000D8C795 /* AuraError.swift */; };
 		43D1E2382B641D8B00D8C795 /* AllTransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D1E2372B641D8B00D8C795 /* AllTransactionsView.swift */; };
 		43D1E23A2B641ED700D8C795 /* TransactionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D1E2392B641ED700D8C795 /* TransactionRowView.swift */; };
@@ -33,12 +35,25 @@
 		53D418A12AC71B8F0070ADB1 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D418A02AC71B8F0070ADB1 /* View+Extensions.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		432643E82B76532C0045904C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 53D418702AC7099A0070ADB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 53D418772AC7099A0070ADB1;
+			remoteInfo = Aura;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		432643DE2B7632260045904C /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		432643E42B76532C0045904C /* AuraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		432643E62B76532C0045904C /* AuraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuraTests.swift; sourceTree = "<group>"; };
+		432644192B76610E0045904C /* TransfertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfertService.swift; sourceTree = "<group>"; };
 		434858142B62CAD2000A70A1 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		434858172B62CD91000A70A1 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		434858192B62E176000A70A1 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
-		4348581B2B62F4CF000A70A1 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
+		4348581B2B62F4CF000A70A1 /* AccountDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailService.swift; sourceTree = "<group>"; };
 		43D1E2352B63FBC000D8C795 /* AuraError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuraError.swift; sourceTree = "<group>"; };
 		43D1E2372B641D8B00D8C795 /* AllTransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTransactionsView.swift; sourceTree = "<group>"; };
 		43D1E2392B641ED700D8C795 /* TransactionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRowView.swift; sourceTree = "<group>"; };
@@ -62,6 +77,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		432643E12B76532C0045904C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		53D418752AC7099A0070ADB1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -72,6 +94,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		432643E52B76532C0045904C /* AuraTests */ = {
+			isa = PBXGroup;
+			children = (
+				432643E62B76532C0045904C /* AuraTests.swift */,
+			);
+			path = AuraTests;
+			sourceTree = "<group>";
+		};
 		434858162B62CADD000A70A1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,7 +109,8 @@
 				434858192B62E176000A70A1 /* KeychainManager.swift */,
 				43E87D902B63E46C008E5343 /* AuraAPI */,
 				434858142B62CAD2000A70A1 /* AuthService.swift */,
-				4348581B2B62F4CF000A70A1 /* AccountService.swift */,
+				4348581B2B62F4CF000A70A1 /* AccountDetailService.swift */,
+				432644192B76610E0045904C /* TransfertService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -108,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				53D4187A2AC7099A0070ADB1 /* Aura */,
+				432643E52B76532C0045904C /* AuraTests */,
 				53D418792AC7099A0070ADB1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -116,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				53D418782AC7099A0070ADB1 /* Aura.app */,
+				432643E42B76532C0045904C /* AuraTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -178,6 +211,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		432643E32B76532C0045904C /* AuraTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 432643EC2B76532C0045904C /* Build configuration list for PBXNativeTarget "AuraTests" */;
+			buildPhases = (
+				432643E02B76532C0045904C /* Sources */,
+				432643E12B76532C0045904C /* Frameworks */,
+				432643E22B76532C0045904C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				432643E92B76532C0045904C /* PBXTargetDependency */,
+			);
+			name = AuraTests;
+			productName = AuraTests;
+			productReference = 432643E42B76532C0045904C /* AuraTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		53D418772AC7099A0070ADB1 /* Aura */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 53D418862AC7099B0070ADB1 /* Build configuration list for PBXNativeTarget "Aura" */;
@@ -202,9 +253,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1510;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					432643E32B76532C0045904C = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = 53D418772AC7099A0070ADB1;
+					};
 					53D418772AC7099A0070ADB1 = {
 						CreatedOnToolsVersion = 15.0;
 					};
@@ -224,11 +279,19 @@
 			projectRoot = "";
 			targets = (
 				53D418772AC7099A0070ADB1 /* Aura */,
+				432643E32B76532C0045904C /* AuraTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		432643E22B76532C0045904C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		53D418762AC7099A0070ADB1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -241,12 +304,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		432643E02B76532C0045904C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				432643E72B76532C0045904C /* AuraTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		53D418742AC7099A0070ADB1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				43E87D8F2B63E430008E5343 /* BodyKey.swift in Sources */,
 				43D1E2382B641D8B00D8C795 /* AllTransactionsView.swift in Sources */,
+				4326441A2B76610E0045904C /* TransfertService.swift in Sources */,
 				4348581A2B62E176000A70A1 /* KeychainManager.swift in Sources */,
 				53D4187C2AC7099A0070ADB1 /* AuraApp.swift in Sources */,
 				53D418952AC70ABF0070ADB1 /* MoneyTransferView.swift in Sources */,
@@ -264,7 +336,7 @@
 				53D4189F2AC717890070ADB1 /* MoneyTransferViewModel.swift in Sources */,
 				53D4188D2AC709F40070ADB1 /* AppViewModel.swift in Sources */,
 				43E87D8B2B63BA32008E5343 /* ApiResponse.swift in Sources */,
-				4348581C2B62F4CF000A70A1 /* AccountService.swift in Sources */,
+				4348581C2B62F4CF000A70A1 /* AccountDetailService.swift in Sources */,
 				53D418A12AC71B8F0070ADB1 /* View+Extensions.swift in Sources */,
 				53D418992AC70FD80070ADB1 /* Color+Extensions.swift in Sources */,
 			);
@@ -272,7 +344,53 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		432643E92B76532C0045904C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 53D418772AC7099A0070ADB1 /* Aura */;
+			targetProxy = 432643E82B76532C0045904C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		432643EA2B76532C0045904C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5F49D5L775;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.benjaminlefrancois.AuraTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aura.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Aura";
+			};
+			name = Debug;
+		};
+		432643EB2B76532C0045904C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5F49D5L775;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.benjaminlefrancois.AuraTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aura.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Aura";
+			};
+			name = Release;
+		};
 		53D418842AC7099B0070ADB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -453,6 +571,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		432643EC2B76532C0045904C /* Build configuration list for PBXNativeTarget "AuraTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				432643EA2B76532C0045904C /* Debug */,
+				432643EB2B76532C0045904C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		53D418732AC7099A0070ADB1 /* Build configuration list for PBXProject "Aura" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

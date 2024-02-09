@@ -58,7 +58,7 @@ extension AccountDetailViewModel {
     }
 
     func loadTransactions() {
-        AccountService.shared.getAccount { result in
+        AccountDetailService().getAccountDetail { result in
             switch result {
             case .success(let success):
                 self.publishAccount(success)

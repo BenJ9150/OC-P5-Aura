@@ -60,7 +60,7 @@ extension MoneyTransferViewModel {
         }
         
         // transfert
-        AccountService.shared.transfert(to: recipient, amount: decimalAmount) { result in
+        TransfertService().transfert(to: recipient, amount: decimalAmount) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(_):
