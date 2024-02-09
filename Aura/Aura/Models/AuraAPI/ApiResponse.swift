@@ -16,7 +16,7 @@ struct AccountResponse: Codable {
     let transactions: [Transaction]
 
     var totalAmount: String {
-        return "€\(currentBalance)"
+        return currentBalance.formattedEuroString()
     }
 }
 
@@ -29,6 +29,11 @@ struct Transaction: Codable {
     }
 
     var amount: String {
-        return "€\(value)"
+        return value.formattedEuroString(withSignLeading: true)
     }
+}
+
+extension NumberFormatter {
+
+    
 }

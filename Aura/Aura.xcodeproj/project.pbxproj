@@ -8,8 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		432643DF2B7632260045904C /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432643DE2B7632260045904C /* String+Extensions.swift */; };
-		432643E72B76532C0045904C /* AuraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432643E62B76532C0045904C /* AuraTests.swift */; };
+		432643E72B76532C0045904C /* AuthServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432643E62B76532C0045904C /* AuthServiceTests.swift */; };
 		4326441A2B76610E0045904C /* TransfertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432644192B76610E0045904C /* TransfertService.swift */; };
+		4326441C2B76674B0045904C /* Authentification.json in Resources */ = {isa = PBXBuildFile; fileRef = 4326441B2B76674B0045904C /* Authentification.json */; };
+		432644202B76685A0045904C /* FakeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326441F2B76685A0045904C /* FakeData.swift */; };
+		432644222B766E1A0045904C /* URLSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432644212B766E1A0045904C /* URLSessionFake.swift */; };
+		432644242B76851D0045904C /* AccountDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = 432644232B76851D0045904C /* AccountDetail.json */; };
+		432644282B7685A00045904C /* AccountDetailServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432644272B7685A00045904C /* AccountDetailServiceTests.swift */; };
+		4326442A2B7685AF0045904C /* TransfertServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432644292B7685AF0045904C /* TransfertServiceTests.swift */; };
+		4326442C2B768FE50045904C /* UrlSessionBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326442B2B768FE50045904C /* UrlSessionBuilderTests.swift */; };
+		4326442E2B769B910045904C /* Decimal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326442D2B769B910045904C /* Decimal+Extensions.swift */; };
 		434858152B62CAD2000A70A1 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434858142B62CAD2000A70A1 /* AuthService.swift */; };
 		434858182B62CD91000A70A1 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434858172B62CD91000A70A1 /* Endpoint.swift */; };
 		4348581A2B62E176000A70A1 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434858192B62E176000A70A1 /* KeychainManager.swift */; };
@@ -48,8 +56,16 @@
 /* Begin PBXFileReference section */
 		432643DE2B7632260045904C /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		432643E42B76532C0045904C /* AuraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		432643E62B76532C0045904C /* AuraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuraTests.swift; sourceTree = "<group>"; };
+		432643E62B76532C0045904C /* AuthServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceTests.swift; sourceTree = "<group>"; };
 		432644192B76610E0045904C /* TransfertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfertService.swift; sourceTree = "<group>"; };
+		4326441B2B76674B0045904C /* Authentification.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Authentification.json; sourceTree = "<group>"; };
+		4326441F2B76685A0045904C /* FakeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeData.swift; sourceTree = "<group>"; };
+		432644212B766E1A0045904C /* URLSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionFake.swift; sourceTree = "<group>"; };
+		432644232B76851D0045904C /* AccountDetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AccountDetail.json; sourceTree = "<group>"; };
+		432644272B7685A00045904C /* AccountDetailServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailServiceTests.swift; sourceTree = "<group>"; };
+		432644292B7685AF0045904C /* TransfertServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfertServiceTests.swift; sourceTree = "<group>"; };
+		4326442B2B768FE50045904C /* UrlSessionBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlSessionBuilderTests.swift; sourceTree = "<group>"; };
+		4326442D2B769B910045904C /* Decimal+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Extensions.swift"; sourceTree = "<group>"; };
 		434858142B62CAD2000A70A1 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		434858172B62CD91000A70A1 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		434858192B62E176000A70A1 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
@@ -97,9 +113,32 @@
 		432643E52B76532C0045904C /* AuraTests */ = {
 			isa = PBXGroup;
 			children = (
-				432643E62B76532C0045904C /* AuraTests.swift */,
+				432644252B7685220045904C /* JsonData */,
+				432644262B7685510045904C /* FakeData */,
+				432643E62B76532C0045904C /* AuthServiceTests.swift */,
+				432644272B7685A00045904C /* AccountDetailServiceTests.swift */,
+				432644292B7685AF0045904C /* TransfertServiceTests.swift */,
+				4326442B2B768FE50045904C /* UrlSessionBuilderTests.swift */,
 			);
 			path = AuraTests;
+			sourceTree = "<group>";
+		};
+		432644252B7685220045904C /* JsonData */ = {
+			isa = PBXGroup;
+			children = (
+				4326441B2B76674B0045904C /* Authentification.json */,
+				432644232B76851D0045904C /* AccountDetail.json */,
+			);
+			path = JsonData;
+			sourceTree = "<group>";
+		};
+		432644262B7685510045904C /* FakeData */ = {
+			isa = PBXGroup;
+			children = (
+				4326441F2B76685A0045904C /* FakeData.swift */,
+				432644212B766E1A0045904C /* URLSessionFake.swift */,
+			);
+			path = FakeData;
 			sourceTree = "<group>";
 		};
 		434858162B62CADD000A70A1 /* Models */ = {
@@ -204,6 +243,7 @@
 				53D418982AC70FD80070ADB1 /* Color+Extensions.swift */,
 				53D418A02AC71B8F0070ADB1 /* View+Extensions.swift */,
 				432643DE2B7632260045904C /* String+Extensions.swift */,
+				4326442D2B769B910045904C /* Decimal+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -289,6 +329,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				432644242B76851D0045904C /* AccountDetail.json in Resources */,
+				4326441C2B76674B0045904C /* Authentification.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,7 +350,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				432643E72B76532C0045904C /* AuraTests.swift in Sources */,
+				432643E72B76532C0045904C /* AuthServiceTests.swift in Sources */,
+				432644222B766E1A0045904C /* URLSessionFake.swift in Sources */,
+				4326442C2B768FE50045904C /* UrlSessionBuilderTests.swift in Sources */,
+				432644282B7685A00045904C /* AccountDetailServiceTests.swift in Sources */,
+				432644202B76685A0045904C /* FakeData.swift in Sources */,
+				4326442A2B7685AF0045904C /* TransfertServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +384,7 @@
 				53D4188D2AC709F40070ADB1 /* AppViewModel.swift in Sources */,
 				43E87D8B2B63BA32008E5343 /* ApiResponse.swift in Sources */,
 				4348581C2B62F4CF000A70A1 /* AccountDetailService.swift in Sources */,
+				4326442E2B769B910045904C /* Decimal+Extensions.swift in Sources */,
 				53D418A12AC71B8F0070ADB1 /* View+Extensions.swift in Sources */,
 				53D418992AC70FD80070ADB1 /* Color+Extensions.swift in Sources */,
 			);

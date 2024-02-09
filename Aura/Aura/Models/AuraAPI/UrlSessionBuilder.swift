@@ -8,6 +8,8 @@
 import Foundation
 
 class UrlSessionBuilder {
+    
+    // MARK: URL Session config
 
     enum HttpMethod: String {
         case get = "GET"
@@ -21,6 +23,21 @@ class UrlSessionBuilder {
         let withAuth: Bool
     }
     
+    // MARK: Private property
+    
+    private var urlSession: URLSession
+    
+    // MARK: Init
+    
+    init(urlSession: URLSession = URLSession(configuration: .default)) {
+        self.urlSession = urlSession
+    }
+}
+
+// MARK: Public method
+
+extension UrlSessionBuilder {
+    
     /// Get data from url session data task
     func buildUrlSession(config: UrlSessionConfig, _ completion: @escaping (Result<Data, Error>) -> ()) {
         // get url
@@ -32,8 +49,8 @@ class UrlSessionBuilder {
         let urlRequest = buildRequest(httpMethod: config.httpMethod, url: url, param: config.parameters, withAuth: config.withAuth)
         
         // crate url session task
-        URLSession.shared.dataTask(with: urlRequest) { dataResult, urlResponse, error in
-            if let err = error {
+        urlSession.dataTask(with: urlRequest) { dataResult, urlResponse, error in
+            if error != nil {
                 completion(.failure(AuraError.serverErr))
                 return
             }
@@ -51,7 +68,7 @@ class UrlSessionBuilder {
     }
 }
 
-// MARK: Private methods
+// MARK: Private method
 
 private extension UrlSessionBuilder {
 
