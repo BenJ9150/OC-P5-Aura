@@ -1,5 +1,5 @@
 //
-//  ApiError.swift
+//  AuraError.swift
 //  Aura
 //
 //  Created by Benjamin LEFRANCOIS on 26/01/2024.
@@ -7,14 +7,14 @@
 
 import Foundation
 
-enum ApiError: Error {
+enum AuraError: Error {
     case serverErr
     case invalidUrl
     case badStatusCode
     case invalidData
     case invalidJson
     case keychainErr
-    case decimalCast
+    case invalidMail
     case unknown
 
     // MARK: Message Builder
@@ -36,8 +36,8 @@ enum ApiError: Error {
             return "\(start)\nError: 105"
         case .keychainErr:
             return "\(start)\nError: 106"
-        case .decimalCast:
-            return "The amount entered does not appear to be a number."
+        case .invalidMail:
+            return "Email is invalid! Change your email and try again."
         case .unknown:
             return "\(start)\nError: 100"
         }

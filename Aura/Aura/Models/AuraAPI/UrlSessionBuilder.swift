@@ -25,7 +25,7 @@ class UrlSessionBuilder {
     func buildUrlSession(config: UrlSessionConfig, _ completion: @escaping (Result<Data, Error>) -> ()) {
         // get url
         guard let url = URL(string: config.sUrl) else {
-            completion(.failure(ApiError.invalidUrl))
+            completion(.failure(AuraError.invalidUrl))
             return
         }
         // get url request
@@ -34,15 +34,15 @@ class UrlSessionBuilder {
         // crate url session task
         URLSession.shared.dataTask(with: urlRequest) { dataResult, urlResponse, error in
             if let err = error {
-                completion(.failure(ApiError.serverErr))
+                completion(.failure(AuraError.serverErr))
                 return
             }
             guard let response = urlResponse as? HTTPURLResponse, response.statusCode == 200 else {
-                completion(.failure(ApiError.badStatusCode))
+                completion(.failure(AuraError.badStatusCode))
                 return
             }
             guard let data = dataResult else {
-                completion(.failure(ApiError.invalidData))
+                completion(.failure(AuraError.invalidData))
                 return
             }
             completion(.success(data))

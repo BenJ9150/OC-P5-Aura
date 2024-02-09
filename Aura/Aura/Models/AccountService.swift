@@ -12,6 +12,7 @@ final class AccountService: UrlSessionBuilder {
     // MARK: Singleton
 
     static let shared = AccountService()
+    private override init() {}
 }
 
 // MARK: Public methods
@@ -32,7 +33,7 @@ extension AccountService {
             case .success(let data):
                 // decode json
                 guard let decodedJson = try? JSONDecoder().decode(AccountResponse.self, from: data) else {
-                    completion(.failure(ApiError.invalidJson))
+                    completion(.failure(AuraError.invalidJson))
                     return
                 }
                 completion(.success(decodedJson))
@@ -43,17 +44,12 @@ extension AccountService {
         }
     }
     
-    func transfert(to recipient: String, amount: String, _ completion: @escaping (Result<Bool, Error>) -> Void) {
-        // convert amount to decimal
-        guard let decimalAmount = Decimal(string: amount) else {
-            completion(.failure(ApiError.decimalCast))
-            return
-        }
+    func transfert(to recipient: String, amount: Decimal, _ completion: @escaping (Result<Bool, Error>) -> Void) {
         // set config for url session
         let config = UrlSessionConfig(
             httpMethod: .post,
             sUrl: EndPoint.transfer.url,
-            parameters: [BodyKey.recipient: recipient, BodyKey.amount: decimalAmount],
+            parameters: [BodyKey.recipient: recipient, BodyKey.amount: amount],
             withAuth: true
         )
         // get data

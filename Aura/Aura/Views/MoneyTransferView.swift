@@ -32,15 +32,6 @@ struct MoneyTransferView: View {
         .onTapGesture {
             self.endEditing(true)  // This will dismiss the keyboard when tapping outside
         }
-        .alert(viewModel.AlertInfo.title, isPresented: $viewModel.displayAlert) {  // NEWBEN: error alert
-            Button(role: .cancel) {} label: {
-                Text("OK")
-            }
-        } message: {
-            if viewModel.AlertInfo.mess != "" {
-                Text(viewModel.AlertInfo.mess)
-            }
-        }
     }
 }
 

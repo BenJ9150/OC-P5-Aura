@@ -34,7 +34,7 @@ class AccountDetailViewModel: ObservableObject {
     @Published var displayAlert = false
     @Published var showAlltransactions = false
     private(set) var allTransactions: [Transaction] = []
-    private(set) var ErrorAlert = ApiError.unknown
+    private(set) var ErrorAlert = AuraError.unknown
 
     // MARK: - Private properties
 
@@ -62,10 +62,10 @@ extension AccountDetailViewModel {
             switch result {
             case .success(let success):
                 self.publishAccount(success)
-            case .failure(let failure as ApiError):
+            case .failure(let failure as AuraError):
                 self.displayError(failure)
             case .failure(_):
-                self.displayError(ApiError.unknown)
+                self.displayError(AuraError.unknown)
             }
         }
     }
@@ -83,7 +83,7 @@ private extension AccountDetailViewModel {
         }
     }
 
-    func displayError(_ failure: ApiError) {
+    func displayError(_ failure: AuraError) {
         ErrorAlert = failure
         DispatchQueue.main.async {
             self.displayAlert.toggle()

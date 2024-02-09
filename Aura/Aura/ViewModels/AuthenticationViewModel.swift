@@ -30,10 +30,10 @@ class AuthenticationViewModel: ObservableObject {
 
     // MARK: - Outputs
 
-    @Published var username: String = "test@aura.app"
-    @Published var password: String = "test123"
+    @Published var username: String = "" // test@aura.app
+    @Published var password: String = "" // test123
     @Published var displayAlert = false
-    private(set) var ErrorAlert = ApiError.unknown
+    private(set) var ErrorAlert = AuraError.unknown
 
     // MARK: - Private properties
 
@@ -54,19 +54,27 @@ extension AuthenticationViewModel {
     func login() {
         print("login with \(username) and \(password)")
 
-        // NEWBEN: signIn method
+        // NEWBEN:
+        
+        // check if is valid mail
+        guard username.isValidEmail() else {
+            displayError(AuraError.invalidMail)
+            return
+        }
+        
+        // signIn
         AuthService().signIn(withEmail: username, andPwd: password) { result in
             switch result {
             case .success(let success):
                 if success {
                     self.onLoginSucceed()
                 } else {
-                    self.displayError(ApiError.keychainErr)
+                    self.displayError(AuraError.keychainErr)
                 }
-            case .failure(let failure as ApiError):
+            case .failure(let failure as AuraError):
                 self.displayError(failure)
             case .failure(_):
-                self.displayError(ApiError.unknown)
+                self.displayError(AuraError.unknown)
             }
         }
     }
@@ -76,10 +84,12 @@ extension AuthenticationViewModel {
 
 private extension AuthenticationViewModel {
 
-    func displayError(_ failure: ApiError) {
+    func displayError(_ failure: AuraError) {
         ErrorAlert = failure
         DispatchQueue.main.async {
             self.displayAlert.toggle()
         }
     }
 }
+
+

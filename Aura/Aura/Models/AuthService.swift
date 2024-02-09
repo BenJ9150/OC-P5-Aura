@@ -24,7 +24,7 @@ final class AuthService: UrlSessionBuilder {
             case .success(let data):
                 // decode json
                 guard let decodedJson = try? JSONDecoder().decode(TokenResponse.self, from: data) else {
-                    completion(.failure(ApiError.invalidJson))
+                    completion(.failure(AuraError.invalidJson))
                     return
                 }
                 // Save token

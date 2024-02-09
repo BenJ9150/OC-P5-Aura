@@ -30,11 +30,9 @@ class MoneyTransferViewModel: ObservableObject {
 
     // MARK: - Outputs
 
-    @Published var recipient: String = "+33 6 01 02 03 04"
-    @Published var amount: String = "12.4"
+    @Published var recipient: String = ""
+    @Published var amount: String =  ""
     @Published var transferMessage: String = ""
-    @Published var displayAlert = false
-    private(set) var AlertInfo: (title: String, mess: String) = ("", "")
 }
 
 // MARK: - Inputs
@@ -42,36 +40,37 @@ class MoneyTransferViewModel: ObservableObject {
 extension MoneyTransferViewModel {
 
     func sendMoney() {
-        AccountService.shared.transfert(to: recipient, amount: amount) { result in
-            switch result {
-            case .success(_):
-                self.displaySuccess()
-            case .failure(let failure as ApiError):
-                self.displayError(failure)
-            case .failure(_):
-                self.displayError(ApiError.unknown)
+        
+        // check if data empty
+        guard !recipient.isEmpty, !amount.isEmpty else {
+            transferMessage = "Please enter recipient and amount."
+            return
+        }
+        
+        // check valid mail or phone
+        guard (recipient.isValidEmail() || recipient.isValidPhone()) else {
+            transferMessage = "Please enter a valid recipient."
+            return
+        }
+        
+        // check valid amount
+        guard let decimalAmount = Decimal(string: amount) else {
+            transferMessage = "Please enter a valid amount."
+            return
+        }
+        
+        // transfert
+        AccountService.shared.transfert(to: recipient, amount: decimalAmount) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(_):
+                    self.transferMessage = "Successfully transferred \(self.amount)€ to \(self.recipient)"
+                case .failure(let failure as AuraError):
+                    self.transferMessage = failure.title + "\n" + failure.message
+                case .failure(_):
+                    self.transferMessage = AuraError.unknown.title
+                }
             }
-        }
-    }
-}
-
-// MARK: - Private methods
-
-private extension MoneyTransferViewModel {
-
-    func displaySuccess() {
-        AlertInfo.title = "Transfer done successfully!"
-        AlertInfo.mess = ""
-        DispatchQueue.main.async {
-            self.displayAlert.toggle()
-        }
-    }
-
-    func displayError(_ failure: ApiError) {
-        AlertInfo.title = failure.title
-        AlertInfo.mess = failure.message
-        DispatchQueue.main.async {
-            self.displayAlert.toggle()
         }
     }
 }
