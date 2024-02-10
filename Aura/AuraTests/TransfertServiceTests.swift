@@ -25,12 +25,9 @@ final class TransfertServiceTests: XCTestCase {
             case .success(_):
                 XCTFail("error in testTransfertFailedResponseError")
                 
-            case .failure(let failure as AuraError):
+            case .failure(let failure):
                 // Then
                 XCTAssertEqual(failure, AuraError.serverErr)
-                
-            case .failure(_):
-                XCTFail("error in testTransfertFailedResponseError")
             }
         }
     }

@@ -62,10 +62,9 @@ extension AccountDetailViewModel {
             switch result {
             case .success(let success):
                 self.publishAccount(success)
-            case .failure(let failure as AuraError):
+                
+            case .failure(let failure):
                 self.displayError(failure)
-            case .failure(_):
-                self.displayError(AuraError.unknown)
             }
         }
     }

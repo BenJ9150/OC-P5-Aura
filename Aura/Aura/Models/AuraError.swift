@@ -13,7 +13,6 @@ enum AuraError: Error {
     case badStatusCode
     case invalidData
     case invalidJson
-    case keychainErr
     case invalidMail
     case unknown
 
@@ -25,7 +24,7 @@ enum AuraError: Error {
         
         switch self {
         case .serverErr:
-            return "\(start)\nError: 101, launch server...!"
+            return "\(start)\nError: 101, launch server"
         case .invalidUrl:
             return "\(start)\nError: 102"
         case .badStatusCode:
@@ -34,8 +33,6 @@ enum AuraError: Error {
             return "\(start)\nError: 104"
         case .invalidJson:
             return "\(start)\nError: 105"
-        case .keychainErr:
-            return "\(start)\nError: 106"
         case .invalidMail:
             return "Email is invalid! Change your email and try again."
         case .unknown:

@@ -9,7 +9,7 @@ import Foundation
 
 final class TransfertService: UrlSessionBuilder {
     
-    func transfert(to recipient: String, amount: Decimal, _ completion: @escaping (Result<Bool, Error>) -> Void) {
+    func transfert(to recipient: String, amount: Decimal, _ completion: @escaping (Result<Bool, AuraError>) -> Void) {
         // set config for url session
         let config = UrlSessionConfig(
             httpMethod: .post,

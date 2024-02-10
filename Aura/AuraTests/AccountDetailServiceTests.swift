@@ -24,12 +24,9 @@ final class AccountDetailServiceTests: XCTestCase {
             case .success(_):
                 XCTFail("error in testGetAccountDetailFailedResponseError")
                 
-            case .failure(let failure as AuraError):
+            case .failure(let failure):
                 // Then
                 XCTAssertEqual(failure, AuraError.serverErr)
-                
-            case .failure(_):
-                XCTFail("error in testGetAccountDetailFailedResponseError")
             }
         }
     }
@@ -46,12 +43,9 @@ final class AccountDetailServiceTests: XCTestCase {
             case .success(_):
                 XCTFail("error in testGetAccountDetailFailedBadData")
                 
-            case .failure(let failure as AuraError):
+            case .failure(let failure):
                 // Then
                 XCTAssertEqual(failure, AuraError.invalidJson)
-                
-            case .failure(_):
-                XCTFail("error in testGetAccountDetailFailedBadData")
             }
         }
     }

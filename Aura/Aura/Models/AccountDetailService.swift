@@ -9,7 +9,7 @@ import Foundation
 
 final class AccountDetailService: UrlSessionBuilder {
 
-    func getAccountDetail(_ completion: @escaping (Result<AccountResponse, Error>) -> Void) {
+    func getAccountDetail(_ completion: @escaping (Result<AccountResponse, AuraError>) -> Void) {
         // set config for url session
         let config = UrlSessionConfig(
             httpMethod: .get,

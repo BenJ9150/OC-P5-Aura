@@ -65,10 +65,9 @@ extension MoneyTransferViewModel {
                 switch result {
                 case .success(_):
                     self.transferMessage = "Successfully transferred \(self.amount)€ to \(self.recipient)"
-                case .failure(let failure as AuraError):
+                    
+                case .failure(let failure):
                     self.transferMessage = failure.title + "\n" + failure.message
-                case .failure(_):
-                    self.transferMessage = AuraError.unknown.title
                 }
             }
         }

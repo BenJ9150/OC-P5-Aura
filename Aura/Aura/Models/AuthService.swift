@@ -9,7 +9,7 @@ import Foundation
 
 final class AuthService: UrlSessionBuilder {
     
-    func signIn(withEmail mail: String, andPwd password: String, _ completion: @escaping (Result<Bool, Error>) -> Void) {
+    func signIn(withEmail mail: String, andPwd password: String, _ completion: @escaping (Result<Bool, AuraError>) -> Void) {
         // set config for url session
         let config = UrlSessionConfig(
             httpMethod: .post,
@@ -29,8 +29,7 @@ final class AuthService: UrlSessionBuilder {
                 }
                 // Save token
                 KeychainManager.token = decodedJson.token
-                // Check if token saved
-                completion(.success(KeychainManager.token == decodedJson.token))
+                completion(.success(true))
 
             case .failure(let error):
                 completion(.failure(error))

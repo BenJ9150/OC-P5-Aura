@@ -13,13 +13,13 @@ final class KeychainManager {
     // MARK: Public properties
 
     static var userIsLogged: Bool {
-        return getTokenFromKeychain() != ""
+        return fetchTokenFromKeychain() != ""
     }
 
     static var token: String {
         get {
             if currentToken == nil {
-                currentToken = getTokenFromKeychain()
+                currentToken = fetchTokenFromKeychain()
             }
             return currentToken!
         } set {
@@ -38,44 +38,26 @@ final class KeychainManager {
 extension KeychainManager {
 
     static func deleteTokenInKeychain() {
-        // Set query
-        let query: [String: Any] = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: keychainTokenAccount
-        ]
         // Find token and delete
-        if SecItemDelete(query as CFDictionary) == noErr {
-            print("Token removed successfully from keychain")
-        } else {
-            print("Something went wrong trying to remove token from keychain")
-        }
-        // change token state
+        SecItemDelete(buildQuery())
         currentToken = nil
     }
 }
 
-// MARK: Private methods
+// MARK: Fetch or save
 
 private extension KeychainManager {
-
-    static func getTokenFromKeychain() -> String {
-        // Set query
-        let query: [String: Any] = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: keychainTokenAccount,
-            kSecMatchLimit as String: kSecMatchLimitOne,
-            kSecReturnAttributes as String: true,
-            kSecReturnData as String: true
-        ]
+    
+    static func fetchTokenFromKeychain() -> String {
         // Check if data exists in the keychain
         var item: CFTypeRef?
-        if SecItemCopyMatching(query as CFDictionary, &item) == noErr {
-            // Extract result
-            if let existingItem = item as? [String: Any],
-               let data = existingItem[kSecValueData as String] as? Data,
-               let token = String(data: data, encoding: .utf8) {
-                return token
-            }
+        SecItemCopyMatching(buildQuery(forFetch: true), &item)
+        
+        // Extract result
+        if let existingItem = item as? [String: Any],
+           let data = existingItem[kSecValueData as String] as? Data,
+           let token = String(data: data, encoding: .utf8) {
+            return token
         }
         print("Token not stored in keychain")
         return ""
@@ -83,40 +65,42 @@ private extension KeychainManager {
 
     static func saveInKeychain(token: String) {
         // check if token already saved
-        if getTokenFromKeychain() != "" {
-            updateInKeychain(token: token)
-            return
-        }
-        // Set query
-        let query: [String: Any] = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: keychainTokenAccount,
-            kSecValueData as String: token.data(using: .utf8)!
-        ]
-        // Store the token
-        if SecItemAdd(query as CFDictionary, nil) == noErr {
-            print("Token saved successfully in keychain")
-            currentToken = token
+        if fetchTokenFromKeychain() == "" {
+            // Store the token
+            SecItemAdd(buildQuery(withValue: token), nil)
         } else {
-            print("Something went wrong trying to save token in keychain")
-            currentToken = ""
+            // Update token
+            let attributes: [String: Any] = [kSecValueData as String: token.data(using: .utf8)!]
+            SecItemUpdate(buildQuery(), attributes as CFDictionary)
         }
+        // Save current value
+        currentToken = token
     }
+}
 
-    static func updateInKeychain(token: String) {
-        // Set query
-        let query: [String: Any] = [
+// MARK: Query
+
+private extension KeychainManager {
+    
+    static func buildQuery(forFetch: Bool = false, withValue value: String = "") -> CFDictionary {
+        // basis of query
+        var query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: keychainTokenAccount
         ]
-        // Set attributes for the new token
-        let attributes: [String: Any] = [kSecValueData as String: token.data(using: .utf8)!]
-        // Find data and update
-        if SecItemUpdate(query as CFDictionary, attributes as CFDictionary) == noErr {
-            currentToken = token
-        } else {
-            print("Something went wrong trying to update token in keychain")
-            currentToken = ""
+        // fetch value in keychain
+        if forFetch {
+            query[kSecMatchLimit as String] = kSecMatchLimitOne
+            query[kSecReturnAttributes as String] = true
+            query[kSecReturnData as String] = true
+            return query as CFDictionary
         }
+        // set value in keychain
+        if value != "" {
+            query[kSecValueData as String] = value.data(using: .utf8)!
+            return query as CFDictionary
+        }
+        // update value in keychain
+        return query as CFDictionary
     }
 }

@@ -22,6 +22,9 @@
 		434858182B62CD91000A70A1 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434858172B62CD91000A70A1 /* Endpoint.swift */; };
 		4348581A2B62E176000A70A1 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434858192B62E176000A70A1 /* KeychainManager.swift */; };
 		4348581C2B62F4CF000A70A1 /* AccountDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4348581B2B62F4CF000A70A1 /* AccountDetailService.swift */; };
+		43BEF4342B776746000139D0 /* KeychainManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BEF4332B776746000139D0 /* KeychainManagerTests.swift */; };
+		43BEF4362B778495000139D0 /* StringExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BEF4352B778495000139D0 /* StringExtensionsTests.swift */; };
+		43BEF4382B778D93000139D0 /* AuraErrorMessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BEF4372B778D93000139D0 /* AuraErrorMessageTests.swift */; };
 		43D1E2362B63FBC000D8C795 /* AuraError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D1E2352B63FBC000D8C795 /* AuraError.swift */; };
 		43D1E2382B641D8B00D8C795 /* AllTransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D1E2372B641D8B00D8C795 /* AllTransactionsView.swift */; };
 		43D1E23A2B641ED700D8C795 /* TransactionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D1E2392B641ED700D8C795 /* TransactionRowView.swift */; };
@@ -70,6 +73,9 @@
 		434858172B62CD91000A70A1 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		434858192B62E176000A70A1 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		4348581B2B62F4CF000A70A1 /* AccountDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailService.swift; sourceTree = "<group>"; };
+		43BEF4332B776746000139D0 /* KeychainManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManagerTests.swift; sourceTree = "<group>"; };
+		43BEF4352B778495000139D0 /* StringExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionsTests.swift; sourceTree = "<group>"; };
+		43BEF4372B778D93000139D0 /* AuraErrorMessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuraErrorMessageTests.swift; sourceTree = "<group>"; };
 		43D1E2352B63FBC000D8C795 /* AuraError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuraError.swift; sourceTree = "<group>"; };
 		43D1E2372B641D8B00D8C795 /* AllTransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTransactionsView.swift; sourceTree = "<group>"; };
 		43D1E2392B641ED700D8C795 /* TransactionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRowView.swift; sourceTree = "<group>"; };
@@ -119,6 +125,9 @@
 				432644272B7685A00045904C /* AccountDetailServiceTests.swift */,
 				432644292B7685AF0045904C /* TransfertServiceTests.swift */,
 				4326442B2B768FE50045904C /* UrlSessionBuilderTests.swift */,
+				43BEF4332B776746000139D0 /* KeychainManagerTests.swift */,
+				43BEF4352B778495000139D0 /* StringExtensionsTests.swift */,
+				43BEF4372B778D93000139D0 /* AuraErrorMessageTests.swift */,
 			);
 			path = AuraTests;
 			sourceTree = "<group>";
@@ -350,12 +359,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43BEF4362B778495000139D0 /* StringExtensionsTests.swift in Sources */,
 				432643E72B76532C0045904C /* AuthServiceTests.swift in Sources */,
+				43BEF4382B778D93000139D0 /* AuraErrorMessageTests.swift in Sources */,
 				432644222B766E1A0045904C /* URLSessionFake.swift in Sources */,
 				4326442C2B768FE50045904C /* UrlSessionBuilderTests.swift in Sources */,
 				432644282B7685A00045904C /* AccountDetailServiceTests.swift in Sources */,
 				432644202B76685A0045904C /* FakeData.swift in Sources */,
 				4326442A2B7685AF0045904C /* TransfertServiceTests.swift in Sources */,
+				43BEF4342B776746000139D0 /* KeychainManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

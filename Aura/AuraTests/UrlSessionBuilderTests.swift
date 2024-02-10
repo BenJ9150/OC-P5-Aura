@@ -30,12 +30,9 @@ final class UrlSessionBuilderTests: XCTestCase {
             case .success(_):
                 XCTFail("error in testBuildUrlSessionFailedDataNil")
                 
-            case .failure(let failure as AuraError):
+            case .failure(let failure):
                 // Then
                 XCTAssertEqual(failure, AuraError.invalidData)
-                
-            case .failure(_):
-                XCTFail("error in testBuildUrlSessionFailedDataNil")
             }
         }
     }
@@ -60,12 +57,9 @@ final class UrlSessionBuilderTests: XCTestCase {
             case .success(_):
                 XCTFail("error in testBuildUrlSessionFailedBadUrl")
                 
-            case .failure(let failure as AuraError):
+            case .failure(let failure):
                 // Then
                 XCTAssertEqual(failure, AuraError.invalidUrl)
-                
-            case .failure(_):
-                XCTFail("error in testBuildUrlSessionFailedBadUrl")
             }
         }
     }

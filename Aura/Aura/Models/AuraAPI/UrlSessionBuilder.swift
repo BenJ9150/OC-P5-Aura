@@ -39,7 +39,7 @@ class UrlSessionBuilder {
 extension UrlSessionBuilder {
     
     /// Get data from url session data task
-    func buildUrlSession(config: UrlSessionConfig, _ completion: @escaping (Result<Data, Error>) -> ()) {
+    func buildUrlSession(config: UrlSessionConfig, _ completion: @escaping (Result<Data, AuraError>) -> ()) {
         // get url
         guard let url = URL(string: config.sUrl) else {
             completion(.failure(AuraError.invalidUrl))

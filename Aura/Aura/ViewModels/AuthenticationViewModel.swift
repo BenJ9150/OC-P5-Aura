@@ -65,16 +65,11 @@ extension AuthenticationViewModel {
         // signIn
         AuthService().signIn(withEmail: username, andPwd: password) { result in
             switch result {
-            case .success(let success):
-                if success {
-                    self.onLoginSucceed()
-                } else {
-                    self.displayError(AuraError.keychainErr)
-                }
-            case .failure(let failure as AuraError):
+            case .success(_):
+                self.onLoginSucceed()
+                
+            case .failure(let failure):
                 self.displayError(failure)
-            case .failure(_):
-                self.displayError(AuraError.unknown)
             }
         }
     }

@@ -22,12 +22,9 @@ final class AuthServiceTests: XCTestCase {
             case .success(_):
                 XCTFail("error in testSignInFailedBadRequest")
                 
-            case .failure(let failure as AuraError):
+            case .failure(let failure):
                 // Then
                 XCTAssertEqual(failure, AuraError.badStatusCode)
-                
-            case .failure(_):
-                XCTFail("error in testSignInFailedBadRequest")
             }
         }
     }
@@ -44,12 +41,9 @@ final class AuthServiceTests: XCTestCase {
             case .success(_):
                 XCTFail("error in testSignInFailedErrorResponse")
                 
-            case .failure(let failure as AuraError):
+            case .failure(let failure):
                 // Then
                 XCTAssertEqual(failure, AuraError.serverErr)
-                
-            case .failure(_):
-                XCTFail("error in testSignInFailedErrorResponse")
             }
         }
     }
@@ -66,12 +60,9 @@ final class AuthServiceTests: XCTestCase {
             case .success(_):
                 XCTFail("error in testSignInFailedBadData")
                 
-            case .failure(let failure as AuraError):
+            case .failure(let failure):
                 // Then
                 XCTAssertEqual(failure, AuraError.invalidJson)
-                
-            case .failure(_):
-                XCTFail("error in testSignInFailedBadData")
             }
         }
     }
