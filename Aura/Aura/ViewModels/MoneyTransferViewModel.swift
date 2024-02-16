@@ -61,13 +61,15 @@ extension MoneyTransferViewModel {
         
         // transfert
         TransfertService().transfert(to: recipient, amount: decimalAmount) { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(_):
-                    self.transferMessage = "Successfully transferred \(self.amount)€ to \(self.recipient)"
-                    
-                case .failure(let failure):
-                    self.transferMessage = failure.title + "\n" + failure.message
+            Task {
+                await MainActor.run {
+                    switch result {
+                    case .success(_):
+                        self.transferMessage = "Successfully transferred \(decimalAmount.formattedEuroString()) to \(self.recipient)"
+                        
+                    case .failure(let failure):
+                        self.transferMessage = failure.title + "\n" + failure.message
+                    }
                 }
             }
         }

@@ -81,8 +81,10 @@ private extension AuthenticationViewModel {
 
     func displayError(_ failure: AuraError) {
         ErrorAlert = failure
-        DispatchQueue.main.async {
-            self.displayAlert.toggle()
+        Task {
+            await MainActor.run {
+                self.displayAlert.toggle()
+            }
         }
     }
 }

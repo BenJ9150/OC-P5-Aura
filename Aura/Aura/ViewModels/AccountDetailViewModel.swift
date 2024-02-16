@@ -76,16 +76,20 @@ private extension AccountDetailViewModel {
 
     func publishAccount(_ account: AccountResponse) {
         allTransactions = account.transactions
-        DispatchQueue.main.async {
-            self.totalAmount = account.totalAmount
-            self.recentTransactions = Array(account.transactions.prefix(3))
+        Task {
+            await MainActor.run {
+                self.totalAmount = account.totalAmount
+                self.recentTransactions = Array(account.transactions.prefix(3))
+            }
         }
     }
 
     func displayError(_ failure: AuraError) {
         ErrorAlert = failure
-        DispatchQueue.main.async {
-            self.displayAlert.toggle()
+        Task {
+            await MainActor.run {
+                self.displayAlert.toggle()
+            }
         }
     }
 }

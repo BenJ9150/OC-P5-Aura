@@ -48,7 +48,7 @@ extension UrlSessionBuilder {
         // get url request
         let urlRequest = buildRequest(httpMethod: config.httpMethod, url: url, param: config.parameters, withAuth: config.withAuth)
         
-        // crate url session task
+        // create url session task
         urlSession.dataTask(with: urlRequest) { dataResult, urlResponse, error in
             if error != nil {
                 completion(.failure(AuraError.serverErr))

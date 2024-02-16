@@ -20,7 +20,6 @@ final class UrlSessionBuilderTests: XCTestCase {
             parameters: [:],
             withAuth: false
         )
-        
         // Given
         let urlSession = URLSessionFake(data: nil, urlResponse: FakeData.statusOK, error: nil)
         let urlSessionBuilder = UrlSessionBuilder(urlSession: urlSession)
@@ -47,7 +46,6 @@ final class UrlSessionBuilderTests: XCTestCase {
             parameters: [:],
             withAuth: false
         )
-        
         // Given
         let urlSession = URLSessionFake(data: nil, urlResponse: nil, error: nil)
         let urlSessionBuilder = UrlSessionBuilder(urlSession: urlSession)

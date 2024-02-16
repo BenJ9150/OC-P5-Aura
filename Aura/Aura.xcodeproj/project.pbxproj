@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4323E3172B7F968700B53283 /* URLSessionDataTaskFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4323E3162B7F968700B53283 /* URLSessionDataTaskFake.swift */; };
 		432643DF2B7632260045904C /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432643DE2B7632260045904C /* String+Extensions.swift */; };
 		432643E72B76532C0045904C /* AuthServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432643E62B76532C0045904C /* AuthServiceTests.swift */; };
 		4326441A2B76610E0045904C /* TransfertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432644192B76610E0045904C /* TransfertService.swift */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4323E3162B7F968700B53283 /* URLSessionDataTaskFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskFake.swift; sourceTree = "<group>"; };
 		432643DE2B7632260045904C /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		432643E42B76532C0045904C /* AuraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		432643E62B76532C0045904C /* AuthServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceTests.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			children = (
 				4326441F2B76685A0045904C /* FakeData.swift */,
 				432644212B766E1A0045904C /* URLSessionFake.swift */,
+				4323E3162B7F968700B53283 /* URLSessionDataTaskFake.swift */,
 			);
 			path = FakeData;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				432644282B7685A00045904C /* AccountDetailServiceTests.swift in Sources */,
 				432644202B76685A0045904C /* FakeData.swift in Sources */,
 				4326442A2B7685AF0045904C /* TransfertServiceTests.swift in Sources */,
+				4323E3172B7F968700B53283 /* URLSessionDataTaskFake.swift in Sources */,
 				43BEF4342B776746000139D0 /* KeychainManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
