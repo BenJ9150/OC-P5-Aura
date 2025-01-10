@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AllTransactionsView: View {
-    @Environment (\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismiss
 
     let allTransactions: [Transaction]
     

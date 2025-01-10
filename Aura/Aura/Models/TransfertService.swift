@@ -20,7 +20,7 @@ final class TransfertService: UrlSessionBuilder {
         // get data
         buildUrlSession(config: config) { result in
             switch result {
-            case .success(let data):
+            case .success:
                 // data is empty, no need to decode
                 completion(.success(true))
 
